@@ -184,7 +184,12 @@ class Burrito:
         if self.get_guacamole():
             cost += 0.75
         return cost
-
+def total_cost(a_list):
+    total_cost = 0
+    for burrito in a_list:
+        print(burrito.get_cost())
+        total_cost += burrito.get_cost()
+    return total_cost
 #Below are some lines of code that will test your class.
 #You can change the value of the variable(s) to test your
 #class with different inputs. Remember though, the results
