@@ -1,0 +1,55 @@
+#Last problem, you wrote a function that generated the all-
+#time win-loss-tie record for Georgia Tech against any other
+#team.
+#
+#That dataset had a lot of other information in it. Let's
+#use it to answer some more questions. As a reminder, the
+#data will be a CSV file, meaning that each line will be a
+#comma-separated list of values. Each line will describe one
+#game.
+#
+#The columns, from left-to-right, are:
+#
+# - Date: the date of the game, in Year-Month-Day format.
+# - Opponent: the name of the opposing team
+# - Location: Home, Away, or Neutral
+# - Points For: Points scored by Georgia Tech
+# - Points Against: Points scored by the opponent
+
+#This line will open the file:
+
+#Here, add any code you want to allow you to answer the
+#questions asked below over on edX. This is just a sandbox
+#for you to explore the dataset: nothing is required for
+#submission here.
+def all_time_record():
+    record_file = open('../resource/lib/public/georgia_tech_football.csv', 'r')
+    lines = record_file.readlines()
+    win = 0
+    lose = 0
+    tie = 0
+    team_dict = {}
+    team_list = []
+    score_list = []
+    for line in lines:
+        line = line[0:-1]
+        split_line = line.split(",")        
+        try:
+            if not split_line[1] in team_list:
+                team_dict[split_line[1]] = {}
+                team_dict[split_line[1]]["matches"] = 1
+                team_dict[split_line[1]]["diff"] = int(split_line[3])
+                team_list.append(split_line[1])
+            else:
+                team_dict[split_line[1]]["matches"] += 1
+                team_dict[split_line[1]]["diff"] += int(split_line[3])
+        except KeyError:
+            pass
+ #ADD YOUR OWN CONDITIONS HERE TO FIND ANSWERS:
+ 
+            
+            
+
+            
+#Call            
+print(all_time_record())        
